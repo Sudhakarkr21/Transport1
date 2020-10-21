@@ -17,6 +17,7 @@ public class Transport_Model {
     private String JCB_WORK_START_TIME;
     private String JCB_WORK_END_TIME;
     private String SILT_TRANSPORTATION;
+    private String NO_SILT_TRANSPORTATION;
 
     public String getNAME() {
         return NAME;
@@ -136,5 +137,13 @@ public class Transport_Model {
 
     public void setSILT_TRANSPORTATION(String SILT_TRANSPORTATION) {
         this.SILT_TRANSPORTATION = SILT_TRANSPORTATION;
+    }
+
+    public String getNO_SILT_TRANSPORTATION() {
+        return NO_SILT_TRANSPORTATION;
+    }
+
+    public void setNO_SILT_TRANSPORTATION(String NO_SILT_TRANSPORTATION) {
+        this.NO_SILT_TRANSPORTATION = NO_SILT_TRANSPORTATION;
     }
 }

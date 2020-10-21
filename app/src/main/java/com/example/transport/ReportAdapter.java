@@ -46,6 +46,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.Holder> {
         holder.h_end_time.setText(transport_models.get(position).getHITACHI_WORK_END_TIME());
         holder.tank_name.setText(transport_models.get(position).getTANK_NAME());
         holder.slit_transportation.setText(transport_models.get(position).getSILT_TRANSPORTATION());
+        holder.no_slit_transportation.setText(transport_models.get(position).getNO_SILT_TRANSPORTATION());
     }
 
     @Override
@@ -57,7 +58,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.Holder> {
 
         TextView name,phoneno,type_of_tank,ro_tank,district_office_name,project_office_name,
                 village_name,tank_name,work_start_time,number_of_machine_deployed,jcb_work_end_time,
-                h_start_time,h_end_time,slit_transportation;
+                h_start_time,h_end_time,slit_transportation,no_slit_transportation;
         public Holder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
@@ -74,6 +75,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.Holder> {
             h_start_time = itemView.findViewById(R.id.h_start_time);
             h_end_time = itemView.findViewById(R.id.h_end_time);
             slit_transportation = itemView.findViewById(R.id.slit_transportation);
+            no_slit_transportation = itemView.findViewById(R.id.no_slit_transportation);
         }
     }
 }

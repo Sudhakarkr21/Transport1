@@ -15,7 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText et_name,et_phoneno,et_type_of_tank,et_ro_name,et_district_office_name,et_project_office_name,
             et_village_name,et_tank_name,et_work_start_time,et_number_of_machine_deployed,et_hitachi_work_start_time,
-            et_hitachi_work_end_time,et_jcb_work_start_time,et_jcb_work_end_time,et_silt_transportation;
+            et_hitachi_work_end_time,et_jcb_work_start_time,et_jcb_work_end_time,
+            et_silt_transportation,et_no_silt_transportation;
     Button bt_submit,bt_report;
     DatabaseHelper databaseHelper;
     @Override
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         et_jcb_work_start_time = findViewById(R.id.et_jcb_work_start_time);
         et_jcb_work_end_time = findViewById(R.id.et_jcb_work_end_time);
         et_silt_transportation = findViewById(R.id.et_silt_transportation);
+        et_no_silt_transportation = findViewById(R.id.et_no_silt_transportation);
         bt_submit = findViewById(R.id.bt_submit);
         databaseHelper = new DatabaseHelper(this);
         bt_submit.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +131,11 @@ public class MainActivity extends AppCompatActivity {
             et_silt_transportation.setError("Enter SILT TRANSPORTATION");
             return;
         }
+
+        if (TextUtils.isEmpty(et_no_silt_transportation.getText().toString())){
+            et_no_silt_transportation.setError("Enter No SILT TRANSPORTATION");
+            return;
+        }
         Transport_Model transport_model = new Transport_Model();
         transport_model.setNAME(et_name.getText().toString());
         transport_model.setPHONENO(et_phoneno.getText().toString());
@@ -145,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         transport_model.setHITACHI_WORK_END_TIME(et_hitachi_work_end_time.getText().toString());
         transport_model.setJCB_WORK_START_TIME(et_jcb_work_start_time.getText().toString());
         transport_model.setSILT_TRANSPORTATION(et_silt_transportation.getText().toString());
-
+        transport_model.setNO_SILT_TRANSPORTATION(et_no_silt_transportation.getText().toString());
         databaseHelper.insertdata(transport_model);
         Toast.makeText(getApplicationContext(),"Inserted",Toast.LENGTH_LONG).show();
     }

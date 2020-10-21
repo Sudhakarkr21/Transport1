@@ -33,11 +33,13 @@ public class DatabaseHelper {
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE TRANSPORT (_id INTEGER PRIMARY KEY, NAME TEXT, PHONENO TEXT, TYPE_OF_TANK TEXT, " +
                     "RO_NAME TEXT, DISTRICT_OFFICE_NAME TEXT, PROJECT_OFFICE_NAME TEXT, VILLAGE_NAME TEXT, TANK_NAME TEXT, WORK_START_TIME TEXT, " +
-                    "NO_MACHINE_DEPLOYED TEXT, HITACHI_WORK_START_TIME TEXT, HITACHI_WORK_END_TIME TEXT, JCB_WORK_START_TIME TEXT, JCB_WORK_END_TIME TEXT, SILT_TRANSPORTATION TEXT);");
+                    "NO_MACHINE_DEPLOYED TEXT, HITACHI_WORK_START_TIME TEXT, HITACHI_WORK_END_TIME TEXT, JCB_WORK_START_TIME TEXT, JCB_WORK_END_TIME TEXT, SILT_TRANSPORTATION TEXT, NO_SILT_TRANSPORTATION TEXT);");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            if (newVersion > oldVersion)
+                db.execSQL("ALTER TABLE TRANSPORT ADD NO_SILT_TRANSPORTATION TEXT");
         }
     }
 
@@ -59,7 +61,7 @@ public class DatabaseHelper {
         contentValues.put("JCB_WORK_START_TIME", transport_model.getJCB_WORK_START_TIME());
         contentValues.put("JCB_WORK_END_TIME", transport_model.getJCB_WORK_END_TIME());
         contentValues.put("SILT_TRANSPORTATION", transport_model.getSILT_TRANSPORTATION());
-
+        contentValues.put("NO_SILT_TRANSPORTATION", transport_model.getNO_SILT_TRANSPORTATION());
         long result = myDataBase.insert("TRANSPORT", null, contentValues);
         close();
         return result;
@@ -92,6 +94,7 @@ public class DatabaseHelper {
                 transport_model.setJCB_WORK_START_TIME(cursor.getString(13));
                 transport_model.setJCB_WORK_END_TIME(cursor.getString(14));
                 transport_model.setSILT_TRANSPORTATION(cursor.getString(15));
+                transport_model.setNO_SILT_TRANSPORTATION(cursor.getString(16));
                 // Adding contact to list
                 transportModelArrayList.add(transport_model);
             } while (cursor.moveToNext());

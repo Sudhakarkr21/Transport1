@@ -214,6 +214,16 @@
                             android:hint="Silt transportation" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/et_no_silt_transportation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="NO Silt transportation" />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
             </ScrollView>
         </androidx.cardview.widget.CardView>
